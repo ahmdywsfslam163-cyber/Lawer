@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مكتب الأستاذ يوسف إبراهيم السيد سلام | للمحاماة</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #050505;
+            --card: #121212;
+            --white: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: var(--dark);
+            color: var(--white);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* رأس الصفحة الجذاب */
+        header {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1470');
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .header-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--gold);
+            margin: 0;
+            text-shadow: 0 5px 15px rgba(212,175,55,0.3);
+        }
+
+        .container { max-width: 1100px; margin: auto; padding: 20px; }
+
+        /* كارت التعريف الذكي */
+        .bio-card {
+            background: var(--card);
+            border-radius: 25px;
+            margin-top: -100px;
+            display: flex;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+            border: 1px solid #222;
+            overflow: hidden;
+            flex-wrap: wrap;
+        }
+
+        .bio-img {
+            flex: 1; min-width: 300px;
+            background: url('1000044452.jpg') no-repeat center center;
+            background-size: cover; min-height: 400px;
+        }
+
+        .bio-info { flex: 1.5; padding: 50px; }
+        .gold-divider { width: 80px; height: 4px; background: var(--gold); margin: 20px 0; }
+
+        /* أقسام الخدمات */
+        .services {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px; margin: 60px 0;
+        }
+
+        .s-card {
+            background: var(--card); padding: 40px; border-radius: 20px;
+            text-align: center; border: 1px solid #1a1a1a; transition: 0.5s;
+        }
+
+        .s-card:hover { border-color: var(--gold); transform: translateY(-15px); }
+        .s-card i { font-size: 50px; color: var(--gold); margin-bottom: 20px; }
+
+        /* نموذج الطلب الديناميكي */
+        .form-area {
+            background: linear-gradient(145deg, #161616, #0a0a0a);
+            padding: 50px; border-radius: 30px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 30px rgba(212,175,55,0.1);
+        }
+
+        input, select, textarea {
+            width: 100%; padding: 18px; margin-bottom: 20px;
+            background: #1a1a1a; border: 1px solid #333; color: white;
+            border-radius: 12px; font-size: 16px; box-sizing: border-box;
+        }
+
+        input:focus { border-color: var(--gold); outline: none; }
+
+        .btn-wa {
+            background: var(--gold); color: black; font-weight: 800;
+            padding: 20px; width: 100%; border: none; border-radius: 12px;
+            cursor: pointer; font-size: 20px; display: flex;
+            align-items: center; justify-content: center; gap: 15px;
+            transition: 0.4s;
+        }
+
+        .btn-wa:hover { background: #fff; transform: scale(1.02); }
+
+        footer { text-align: center; padding: 50px; opacity: 0.6; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 class="header-title animate__animated animate__fadeInDown">يوسف إبراهيم السيد سلام</h1>
+        <p class="animate__animated animate__fadeInUp" style="letter-spacing: 5px;">ماجستير الشريعة والقانون</p>
+    </header>
+
+    <div class="container">
+        <section class="bio-card animate__animated animate__fadeIn">
+            <div class="bio-img"></div>
+            <div class="bio-info">
+                <h2 style="color: var(--gold); font-size: 2rem;">مستشارك القانوني</h2>
+                <div class="gold-divider"></div>
+                <p style="font-size: 1.1rem; color: #bbb;">أهلاً بك في منصتي القانونية. بصفتي متخصصاً حاصلاً على درجة الماجستير في الشريعة والقانون، أقدم لك خلاصة الخبرة القانونية والشرعية لضمان حماية حقوقك بأعلى معايير الدقة والنزاهة.</p>
+                <div style="margin-top: 30px;">
+                    <p><i class="fas fa-gavel" style="color: var(--gold);"></i> خبرة في الترافع وصياغة العقود.</p>
+                    <p><i class="fas fa-balance-scale" style="color: var(--gold);"></i> حلول قانونية مبنية على الشريعة والقانون.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="services">
+            <div class="s-card animate__animated animate__zoomIn">
+                <i class="fas fa-shield-alt"></i>
+                <h3>الجنايات المدنية</h3>
+                <p>دفاع قانوني قوي واستشارات فورية.</p>
+            </div>
+            <div class="s-card animate__animated animate__zoomIn" style="animation-delay: 0.2s;">
+                <i class="fas fa-users"></i>
+                <h3>قضايا الأسرة</h3>
+                <p>المواريث والوصايا والطلاق الشرعي.</p>
+            </div>
+            <div class="s-card animate__animated animate__zoomIn" style="animation-delay: 0.4s;">
+                <i class="fas fa-landmark"></i>
+                <h3>القانون الإداري</h3>
+                <p>قضايا الموظفين والمنازعات الحكومية.</p>
+            </div>
+        </div>
+
+        <div class="form-area">
+            <h2 style="text-align: center; color: var(--gold); margin-bottom: 40px;">تقديم طلب خدمة قانونية</h2>
+            
+            <form id="legalForm">
+                <input type="text" id="cust_name" placeholder="اسمك بالكامل" required>
+                <input type="tel" id="cust_phone" placeholder="رقم هاتفك للتواصل" required>
+                
+                <select id="cust_service">
+                    <option value="قضية جديدة">نوع الطلب: رفع قضية جديدة</option>
+                    <option value="استشارة شرعية">نوع الطلب: استشارة شرعية</option>
+                    <option value="صياغة عقد">نوع الطلب: صياغة عقد أو اتفاقية</option>
+                    <option value="أخرى">أخرى</option>
+                </select>
+
+                <textarea id="cust_msg" rows="5" placeholder="اشرح لنا بإيجاز كيف يمكن للأستاذ يوسف مساعدتك؟" required></textarea>
+
+                <button type="button" class="btn-wa" onclick="sendToLawyer()">
+                    <span>إرسال الطلب للأستاذ يوسف</span>
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+            </form>
+            <div id="success_msg" style="display:none; text-align:center; margin-top:20px; color:var(--gold);">
+                جاري توجيه طلبك للواتساب الخاص بالأستاذ يوسف...
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 جميع الحقوق محفوظة | المحامي يوسف إبراهيم السيد سلام</p>
+        <p>الرقم الرسمي: 01033318581</p>
+    </footer>
+
+    <script>
+        function sendToLawyer() {
+            // جلب البيانات من الخانات
+            const name = document.getElementById('cust_name').value;
+            const phone = document.getElementById('cust_phone').value;
+            const service = document.getElementById('cust_service').value;
+            const msg = document.getElementById('cust_msg').value;
+
+            // التحقق من أن البيانات ليست فارغة
+            if(name === "" || phone === "" || msg === "") {
+                alert("برجاء ملء جميع البيانات لضمان وصول طلبك بشكل صحيح");
+                return;
+            }
+
+            // إظهار رسالة نجاح داخل الموقع
+            document.getElementById('success_msg').style.display = 'block';
+
+            // رقمك بصيغة دولية صحيحة
+            const myNumber = "201033318581";
+
+            // تنسيق الرسالة الذكية للواتساب
+            const waMessage = `*طلب خدمة قانونية جديدة*%0A%0A` +
+                              `*اسم العميل:* ${name}%0A` +
+                              `*رقم التواصل:* ${phone}%0A` +
+                              `*نوع الخدمة:* ${service}%0A` +
+                              `*التفاصيل:* ${msg}%0A%0A` +
+                              `_تم الإرسال عبر الموقع الرسمي للأستاذ يوسف_`;
+
+            // فتح الواتساب في نافذة جديدة دون إغلاق الموقع
+            const waLink = `https://wa.me/${myNumber}?text=${waMessage}`;
+            window.open(waLink, '_blank');
+        }
+    </script>
+
+</body>
+</html>
