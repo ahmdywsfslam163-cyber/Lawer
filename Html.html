@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار شبكة الواي فاي القوي</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f0f0; text-align: center; padding: 20px; }
+        h1 { color: #333; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        button { padding: 10px 20px; font-size: 18px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; margin: 10px; }
+        button:hover { background: #0056b3; }
+        #results { margin-top: 20px; font-size: 18px; }
+        .good { color: green; }
+        .medium { color: orange; }
+        .bad { color: red; }
+        img { max-width: 100%; height: auto; margin: 10px 0; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>اختبار شبكة الواي فاي الخاصة بك</h1>
+        <p>اضغط على الزر عشان تبدأ الاختبار الكامل</p>
+        
+        <button onclick="runTests()">ابدأ الاختبار الشامل</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        async function runTests() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<p>جاري الاختبار... انتظر شوية 🚀</p>';
+
+            // 1. اختبار قوة الإشارة (WebRTC - يشتغل في معظم المتصفحات الحديثة)
+            let signalStrength = 'غير متوفر (جرب متصفح Chrome أو Edge)';
+            try {
+                const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+                if (connection && connection.downlink) {
+                    signalStrength = `سرعة تقريبية: ${connection.downlink} Mbps`;
+                }
+            } catch (e) {}
+
+            // اختبار أدق بـ Navigator API إذا متوفر
+            if ('connection' in navigator) {
+                const conn = navigator.connection;
+                signalStrength = `نوع الاتصال: ${conn.effectiveType} | قوة تقريبية: ${conn.downlink} Mbps`;
+            }
+
+            // 2. اختبار السرعة الحقيقي (Download + Upload + Ping)
+            let speedResult = '';
+            try {
+                // Ping أولاً
+                const pingStart = performance.now();
+                await fetch('https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_92x30dp.png', {cache: 'no-cache'});
+                const ping = Math.round(performance.now() - pingStart);
+                
+                // Download Test (تحميل ملف كبير نسبيًا)
+                const downloadStart = performance.now();
+                const response = await fetch('https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png?' + Date.now(), {cache: 'no-cache'});
+                const blob = await response.blob();
+                const downloadTime = (performance.now() - downloadStart) / 1000; // ثواني
+                const downloadSize = blob.size / 1024 / 1024; // MB
+                const downloadSpeed = (downloadSize * 8 / downloadTime).toFixed(2); // Mbps
+
+                // Upload Test (بسيط - إرسال بيانات صغيرة)
+                const uploadData = new Blob([new ArrayBuffer(1 * 1024 * 1024)]); // 1MB
+                const uploadStart = performance.now();
+                await fetch('https://httpbin.org/post', {method: 'POST', body: uploadData});
+                const uploadTime = (performance.now() - uploadStart) / 1000;
+                const uploadSpeed = (1 * 8 / uploadTime).toFixed(2); // Mbps
+
+                speedResult = `
+                    <p><strong>Ping:</strong> ${ping} ms ${ping < 50 ? '<span class="good">(ممتاز)</span>' : ping < 100 ? '<span class="medium">(كويس)</span>' : '<span class="bad">(ضعيف)</span>'}</p>
+                    <p><strong>سرعة التحميل (Download):</strong> ${downloadSpeed} Mbps</p>
+                    <p><strong>سرعة الرفع (Upload):</strong> ${uploadSpeed} Mbps</p>
+                `;
+            } catch (e) {
+                speedResult = '<p class="bad">فشل في اختبار السرعة (جرب اتصال أفضل أو موقع مثل speedtest.net)</p>';
+            }
+
+            // 3. معلومات الشبكة (SSID وغيره - محدود في المتصفحات)
+            let networkInfo = 'غير متوفر (لأسباب أمان المتصفح)';
+            try {
+                // يشتغل فقط في بعض المتصفحات أو مع HTTPS
+                if (navigator.userAgent.includes('Chrome')) {
+                    networkInfo = 'افتح about://wifi في Chrome لتفاصيل أكتر';
+                }
+            } catch (e) {}
+
+            resultsDiv.innerHTML = `
+                <h2>نتائج الاختبار:</h2>
+                <p><strong>قوة الإشارة التقريبية:</strong> ${signalStrength}</p>
+                ${speedResult}
+                <p><strong>معلومات الشبكة:</strong> ${networkInfo}</p>
+                <p>نصيحة: لو الإشارة ضعيفة، قرب من الراوتر أو استخدم Repeater!</p>
+            `;
+        }
+    </script>
+</body>
+</html>
